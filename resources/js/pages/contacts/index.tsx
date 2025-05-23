@@ -23,9 +23,9 @@ export default function Contacts() {
             <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
                 <div className="flex items-center justify-between">
                     <h1 className="text-2xl font-bold">Contacts</h1>
+                    <Link href="/contacts/create" />
                     <Button>
-                        <Link href="/contacts/create" />
-                        <Plus />
+                        <Plus className="h-4 w-4" />
                         Add Contact
                     </Button>
                 </div>
