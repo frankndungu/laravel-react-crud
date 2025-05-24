@@ -4,7 +4,7 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head, Link } from '@inertiajs/react';
-import { Plus } from 'lucide-react';
+import { EditIcon, Plus } from 'lucide-react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -49,6 +49,7 @@ export default function Contacts({ contacts }: { contacts: Contact[] }) {
                                 <TableHead>Email</TableHead>
                                 <TableHead>Phone Number</TableHead>
                                 <TableHead>Address</TableHead>
+                                <TableHead>Action</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -59,6 +60,11 @@ export default function Contacts({ contacts }: { contacts: Contact[] }) {
                                     <TableCell>{contact.email}</TableCell>
                                     <TableCell>{contact.mobile}</TableCell>
                                     <TableCell>{contact.address}</TableCell>
+                                    <Link href={`/contacts/${contact.id}/edit`}>
+                                        <Button variant="outline">
+                                            <EditIcon className="h-4 w-4" />
+                                        </Button>
+                                    </Link>
                                 </TableRow>
                             ))}
                         </TableBody>
