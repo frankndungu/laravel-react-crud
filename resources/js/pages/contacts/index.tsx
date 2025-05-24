@@ -33,11 +33,12 @@ export default function Contacts({ contacts }: { contacts: Contact[] }) {
             <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
                 <div className="flex items-center justify-between">
                     <h1 className="text-2xl font-bold">Contacts</h1>
-                    <Link href="/contacts/create" />
-                    <Button>
-                        <Plus className="h-4 w-4" />
-                        Add Contact
-                    </Button>
+                    <Link href="/contacts/create">
+                        <Button>
+                            <Plus className="h-4 w-4" />
+                            Add Contact
+                        </Button>
+                    </Link>
                 </div>
                 <div className="flex flex-col gap-4">
                     <Table>
