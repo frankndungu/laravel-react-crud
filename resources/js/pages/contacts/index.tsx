@@ -17,7 +17,16 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function Contacts() {
+// Define the interface for the contact object
+interface Contact {
+    id: number;
+    name: string;
+    email: string;
+    mobile: string;
+    address: string;
+}
+
+export default function Contacts({ contacts }: { contacts: Contact[] }) {
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Contacts" />
@@ -32,22 +41,26 @@ export default function Contacts() {
                 </div>
                 <div className="flex flex-col gap-4">
                     <Table>
-                        <TableCaption>A list of your recent invoices.</TableCaption>
+                        <TableCaption>A list of your contacts.</TableCaption>
                         <TableHeader>
                             <TableRow>
-                                <TableHead className="w-[100px]">Invoice</TableHead>
-                                <TableHead>Status</TableHead>
-                                <TableHead>Method</TableHead>
-                                <TableHead className="text-right">Amount</TableHead>
+                                <TableHead className="w-[100px]">Id</TableHead>
+                                <TableHead>Name</TableHead>
+                                <TableHead>Email</TableHead>
+                                <TableHead>Phone Number</TableHead>
+                                <TableHead>Address</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            <TableRow>
-                                <TableCell className="font-medium">INV001</TableCell>
-                                <TableCell>Paid</TableCell>
-                                <TableCell>Credit Card</TableCell>
-                                <TableCell className="text-right">$250.00</TableCell>
-                            </TableRow>
+                            {contacts.map((contact) => (
+                                <TableRow>
+                                    <TableCell className="font-medium">{contact.id}</TableCell>
+                                    <TableCell>{contact.name}</TableCell>
+                                    <TableCell>{contact.email}</TableCell>
+                                    <TableCell>{contact.mobile}</TableCell>
+                                    <TableCell>{contact.address}</TableCell>
+                                </TableRow>
+                            ))}
                         </TableBody>
                     </Table>
                 </div>

@@ -13,7 +13,12 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return Inertia::render('contacts/index');
+        // Fetch all contacts from the database
+        $contacts = Contact::all();
+        // Return the contacts to the Inertia view
+        return Inertia::render('contacts/index', [
+            'contacts' => $contacts,
+        ]);
     }
 
     /**
