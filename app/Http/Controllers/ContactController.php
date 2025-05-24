@@ -34,7 +34,20 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the request data
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'mobile' => 'nullable|string|max:20',
+            'address' => 'nullable|string|max:255',
+        ]);
+
+        // Validate user data
+        $validatesData['user_id'] = $request->user()->id;
+        Contact::create($request->all());
+
+        // Redirect to the contacts index page
+        return redirect()->route('contacts.index')->with('success', 'Contact created successfully.');
     }
 
     /**
